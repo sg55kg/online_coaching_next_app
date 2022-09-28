@@ -8,7 +8,6 @@ const Dashboard: NextPage = () => {
 
     const { user } = useAuth()
 
-    console.log(user)
     return (
         <CoachLayout>
             <div>

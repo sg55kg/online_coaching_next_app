@@ -3,7 +3,6 @@ import CoachHeader from "../components/coach/CoachHeader";
 import CoachNav from "../components/coach/CoachNav";
 
 
-
 const CoachLayout = ({ children }) => {
 
     return (
