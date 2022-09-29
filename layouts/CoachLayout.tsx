@@ -8,7 +8,6 @@ const CoachLayout = ({ children }) => {
     return (
         <CoachProvider>
             <CoachHeader />
-            <CoachNav />
                 {children}
             <footer>
                 Test Footer

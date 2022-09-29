@@ -8,7 +8,7 @@ const CoachNav: FC = () => {
     const { coach, teams } = useCoachContext()
 
     return (
-        <div>
+        <div style={{ border: '1px solid red' }}>
             <div>
                 <h4>
                     My Teams
