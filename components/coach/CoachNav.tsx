@@ -41,7 +41,8 @@ const CoachNav: FC = () => {
                     <DrawerCloseButton 
                     />
                     <DrawerBody>
-                        This is only a test. Right here.
+                        <Link href="/coach/dashboard">Activity</Link>
+                        <Link href="/coach/teams">My Teams</Link>
                     </DrawerBody>
                 </DrawerContent>        
             </Drawer>   
