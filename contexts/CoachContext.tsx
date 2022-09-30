@@ -1,6 +1,6 @@
 import {createContext, useContext, useEffect, useState} from "react";
 import {useAuth} from "./AuthContext";
-import {CoachData} from "../types";
+import {AthleteData, CoachData, TeamData} from "../types";
 
 
 const CoachContext = createContext(null!)
@@ -13,9 +13,10 @@ const CoachProvider = ({ children }) => {
 
     const { user } = useAuth()
 
-    const [coach, setCoach] = useState(null)
-    const [teams, setTeams] = useState([])
-    const [allAthletes, setAllAthletes] = useState([])
+    const [coach, setCoach] = useState<CoachData>(null)
+    const [teams, setTeams] = useState<TeamData[]>([])
+    const [allAthletes, setAllAthletes] = useState<AthleteData[]>([])
+
 
     useEffect(() => {
         const fetchCoachData = async () => {
