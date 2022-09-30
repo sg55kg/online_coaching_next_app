@@ -1,12 +1,13 @@
 import {NextPage} from "next";
+import CoachProvider from "../../../contexts/CoachContext";
 
 
 const TeamPage: NextPage = () => {
 
     return (
-        <div>
+        <CoachProvider>
             Team Test
-        </div>
+        </CoachProvider>
     )
 }
 
