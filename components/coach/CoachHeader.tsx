@@ -1,14 +1,16 @@
+import { Flex } from "@chakra-ui/react";
 import {FC} from "react";
 import CoachNav from "./CoachNav";
+
 
 
 const CoachHeader: FC = () => {
 
     return (
-        <div>
+        <Flex justify='space-between'>
             Coach Header
             <CoachNav />
-        </div>
+        </Flex>
     )
 }
 
