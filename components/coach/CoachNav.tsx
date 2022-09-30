@@ -1,27 +1,37 @@
-import {FC} from "react";
+import {FC, useState} from "react";
 import {useCoachContext} from "../../contexts/CoachContext";
 import Link from "next/link";
+import { IconButton } from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import {
+    Drawer,
+    DrawerBody,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerOverlay,
+    DrawerContent,
+    DrawerCloseButton,
+  } from '@chakra-ui/react'
 
 
 const CoachNav: FC = () => {
 
     const { coach, teams } = useCoachContext()
 
+    const [ showModal, setShowModal] = useState(false)
+
     return (
-        <div style={{ border: '1px solid red' }}>
-            <div>
-                <h4>
-                    My Teams
-                </h4>
-                {teams.length > 0 && teams.map((team, index) => {
-                    return (
-                        <div>
-                            <Link href={`teams/${team.id}`} >{team.name}</Link>
-                        </div>
-                    )
-                })}
-            </div>
-        </div>
+        <>
+            <IconButton aria-label={'Where are you going?'} icon={<HamburgerIcon />}>
+            </IconButton>   
+            <Drawer 
+                isOpen={showModal}
+                placement="top"
+                onClose={() => setShowModal(false)}
+            >
+                    
+            </Drawer>   
+        </>
     )
 }
 
