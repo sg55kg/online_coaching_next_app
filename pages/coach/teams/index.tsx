@@ -1,14 +1,14 @@
 import {NextPage} from "next";
-import CoachProvider from "../../../contexts/CoachContext";
 import TeamsList from "../../../components/coach/TeamsList";
+import CoachLayout from "../../../layouts/CoachLayout";
 
 
 const Teams: NextPage = () => {
 
     return (
-        <CoachProvider>
+        <CoachLayout>
             <TeamsList />
-        </CoachProvider>
+        </CoachLayout>
     )
 }
 

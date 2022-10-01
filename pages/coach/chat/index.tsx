@@ -1,14 +1,13 @@
-import {NextPage} from "next";
 import CoachLayout from "../../../layouts/CoachLayout";
 
 
-const TeamPage: NextPage = () => {
+const Chat = () => {
 
     return (
         <CoachLayout>
-            Team Test
+            Test
         </CoachLayout>
     )
 }
 
-export default TeamPage
+export default Chat

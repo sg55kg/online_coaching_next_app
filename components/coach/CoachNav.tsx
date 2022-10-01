@@ -43,6 +43,7 @@ const CoachNav: FC = () => {
                     <DrawerBody>
                         <Link href="/coach/dashboard">Activity</Link>
                         <Link href="/coach/teams">My Teams</Link>
+                        <Link href="/coach/chat">Messages</Link>
                     </DrawerBody>
                 </DrawerContent>        
             </Drawer>   
