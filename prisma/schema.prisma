@@ -15,6 +15,13 @@ enum Role {
     ADMIN
 }
 
+enum Sport {
+    WEIGHTLIFTING
+    POWERLIFTING
+    BODYBUILDING
+    BODYWEIGHT
+}
+
 model Account {
     id                  String  @id @default(cuid())
     userId              String
@@ -78,6 +85,7 @@ model Coach {
     userId      String      @unique
     teams       Team[]
     athletes    Athlete[]   @relation("athletes")
+    programs    Program[]
 
     user        User        @relation("coachId", fields: [userId], references: [id])
 }
@@ -91,4 +99,36 @@ model Athlete {
     user        User    @relation("athleteId", fields: [userId], references: [id])
     team        Team    @relation("athletes", fields: [teamId], references: [id])
     coach       Coach   @relation("athletes", fields: [coachId], references: [id])
+}
+
+model Program {
+    id      String  @id @default(cuid())
+    coach   Coach
+    athete  Athlete?
+    team    Team?
+
+}
+
+model Week {
+    id      Number  @id
+    program Program
+    days     Day[]
+}
+
+model Day {
+    id      Number  @id
+    program Program
+    week    Week
+
+}
+
+model Exercise {
+    id                  Number  @id
+    day                 Day
+    name                String
+    sport               Sport
+    totalRepetitions    Number
+    sets                Number
+    repsPerSet          Number
+
 }
