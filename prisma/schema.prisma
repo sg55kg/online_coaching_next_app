@@ -106,7 +106,7 @@ model Program {
     coach   Coach
     athete  Athlete?
     team    Team?
-
+    sport   Sport
 }
 
 model Week {
@@ -126,7 +126,7 @@ model Exercise {
     id                  Number  @id
     day                 Day
     name                String
-    sport               Sport
+    sports              Sport[]
     totalRepetitions    Number
     sets                Number
     repsPerSet          Number
