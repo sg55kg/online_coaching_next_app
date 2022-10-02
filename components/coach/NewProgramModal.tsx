@@ -1,5 +1,5 @@
 import {Modal, ModalBody} from "@chakra-ui/modal";
-import {Dispatch, FC, SetStateAction} from "react";
+import {Dispatch, FC, SetStateAction, useState} from "react";
 import {Input, InputGroup, InputRightAddon} from "@chakra-ui/input";
 import {AthleteData} from "../../types";
 import {Button, Stack} from "@chakra-ui/react";
@@ -12,6 +12,20 @@ interface NewProgramModalProps {
 }
 
 const NewProgramModal: FC<NewProgramModalProps> = ({ isOpen, onClose }) => {
+
+    const [newProgram, setNewProgram] = useState({
+        athlete: '',
+        startDate: new Date(),
+        endDate: new Date(),
+    })
+
+    const calculateEndDate = (startDate: Date, programLength: any) => {
+
+    }
+
+    const handleSaveProgram = async () => {
+
+    }
 
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
@@ -34,7 +48,9 @@ const NewProgramModal: FC<NewProgramModalProps> = ({ isOpen, onClose }) => {
                         />
                     </InputGroup>
                 </Stack>
-                <Button>
+                <Button
+                    onClick={handleSaveProgram}
+                >
                     Create
                 </Button>
             </ModalBody>
