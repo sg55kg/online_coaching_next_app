@@ -38,11 +38,13 @@ const TeamPage: NextPage = () => {
                             <p>{athlete.name}</p>
                             {athlete.currentProgram ?
                                 <p>Current Program</p> :
-                                <p>{`${athlete.name} does not have a program`}</p>
+                                <div>
+                                    <p>{`${athlete.name} does not have a program`}</p>
+                                    <Button>
+                                        Start new program
+                                    </Button>
+                                </div>
                             }
-                            <Button>
-                                Start new program
-                            </Button>
                         </div>
                     )
                 })}
