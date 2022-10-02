@@ -4,6 +4,7 @@ import {useModal} from "../../../hooks/useModal";
 import NewProgramModal from "../../../components/coach/NewProgramModal";
 import {useCoachContext} from "../../../contexts/CoachContext";
 import {useRouter} from "next/router";
+import CoachLayout from "../../../layouts/CoachLayout";
 
 const mockExercises = [
     {
@@ -29,29 +30,13 @@ const mockWeek = {
 
 
 
-const WriteProgramPage: NextPage = () => {
-
-    const router = useRouter()
-    const { athleteId } = router.query
-    const { viewModal, toggleModal } = useModal()
-    const { athletes } = useCoachContext()
-
-    const currentAthlete = athletes.find(a => a.id === athleteId)
+const AthleteProgramPage: NextPage = () => {
 
     return (
-        <div>
-            <div>Current program overview here if it exists</div>
-            <div>
-                No Program, then:
-                <Button
-                    onClick={toggleModal}
-                >
-                    Create new Program
-                </Button>
-            </div>
-            <NewProgramModal isOpen={viewModal} onClose={toggleModal} athlete={currentAthlete} />
-        </div>
+        <CoachLayout>
+            <AthleteProgramPage />
+        </CoachLayout>
     )
 }
 
-export default WriteProgramPage
+export default AthleteProgramPage
