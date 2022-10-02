@@ -11,6 +11,11 @@ interface NewProgramModalProps {
 
 }
 
+enum endDateOptions {
+    WEEKS = 'WEEKS',
+    MONTHS = 'MONTHS'
+}
+
 const NewProgramModal: FC<NewProgramModalProps> = ({ isOpen, onClose }) => {
 
     const [newProgram, setNewProgram] = useState({
@@ -19,7 +24,10 @@ const NewProgramModal: FC<NewProgramModalProps> = ({ isOpen, onClose }) => {
         endDate: new Date(),
     })
 
-    const calculateEndDate = (startDate: Date, programLength: any) => {
+    const [endDateMeasurement, setEndDateMeasurement] = useState<string>(endDateOptions.WEEKS)
+
+    const calculateEndDate = (startDate: Date, programLength: number) => {
+        const measurement: string = endDateMeasurement
 
     }
 
@@ -40,9 +48,12 @@ const NewProgramModal: FC<NewProgramModalProps> = ({ isOpen, onClose }) => {
                         <Input type="number" />
                         <InputRightAddon
                             children={
-                                <select>
-                                    <option>Weeks</option>
-                                    <option>Months</option>
+                                <select
+                                    value={endDateMeasurement}
+                                    onChange={(e) => setEndDateMeasurement(e.target.value)}
+                                >
+                                    <option value={endDateOptions.WEEKS}>Weeks</option>
+                                    <option value={endDateOptions.MONTHS}>Months</option>
                                 </select>
                             }
                         />
