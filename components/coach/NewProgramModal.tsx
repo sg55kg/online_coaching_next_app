@@ -1,8 +1,9 @@
 import {Modal, ModalBody} from "@chakra-ui/modal";
-import {Dispatch, FC, SetStateAction, useState} from "react";
+import {ChangeEvent, Dispatch, FC, SetStateAction, useState} from "react";
 import {Input, InputGroup, InputRightAddon} from "@chakra-ui/input";
 import {AthleteData} from "../../types";
 import {Button, Stack} from "@chakra-ui/react";
+import {useCoachContext} from "../../contexts/CoachContext";
 
 interface NewProgramModalProps {
     isOpen: boolean,
@@ -16,10 +17,12 @@ enum endDateOptions {
     MONTHS = 'MONTHS'
 }
 
-const NewProgramModal: FC<NewProgramModalProps> = ({ isOpen, onClose }) => {
+const NewProgramModal: FC<NewProgramModalProps> = ({ isOpen, onClose, athlete }) => {
+
+    const { athletes } = useCoachContext()
 
     const [newProgram, setNewProgram] = useState({
-        athlete: '',
+        athlete: athlete,
         startDate: new Date(),
         endDate: new Date(),
     })
@@ -31,6 +34,14 @@ const NewProgramModal: FC<NewProgramModalProps> = ({ isOpen, onClose }) => {
 
     }
 
+    const handleSelectAthlete = (e: ChangeEvent<HTMLSelectElement>) => {
+        if(e.target.value === '' || e.target.value === null)
+            return setNewProgram({ ...newProgram, athlete: null })
+
+        const athleteToSelect = athletes.find(a => a.id === e.target.value)
+        setNewProgram({ ...newProgram, athlete: athleteToSelect })
+    }
+
     const handleSaveProgram = async () => {
 
     }
@@ -39,7 +50,14 @@ const NewProgramModal: FC<NewProgramModalProps> = ({ isOpen, onClose }) => {
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalBody>
                 <label>Athlete</label>
-                <Input type="text" />
+                <select onChange={handleSelectAthlete}>
+                    <option selected={athlete === null}> </option>
+                    {athletes.length > 0 && athletes.map((ath, idx) => {
+                        return (
+                            <option selected={athlete.id === ath.id} key={ath.id} value={ath.id}>{ath.name}</option>
+                        )
+                    })}
+                </select>
                 <label>Start Date</label>
                 <Input type="date" />
                 <Stack>
