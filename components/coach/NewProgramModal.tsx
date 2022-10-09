@@ -31,7 +31,17 @@ const NewProgramModal: FC<NewProgramModalProps> = ({ isOpen, onClose, athlete })
 
     const calculateEndDate = (startDate: Date, programLength: number) => {
         const measurement: string = endDateMeasurement
-
+        let endDate: Date
+        if(measurement === endDateOptions.WEEKS) {
+            endDate = new Date(startDate.getDate() + programLength * 7)
+        } else {
+            endDate = new Date()
+            endDate.setMonth(startDate.getMonth() + programLength)
+        }
+        setNewProgram({
+            ...newProgram,
+            endDate: endDate
+        })
     }
 
     const handleSelectAthlete = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -59,11 +69,18 @@ const NewProgramModal: FC<NewProgramModalProps> = ({ isOpen, onClose, athlete })
                     })}
                 </select>
                 <label>Start Date</label>
-                <Input type="date" />
+                <Input
+                    onChange={(e) => setNewProgram({ ...newProgram, startDate: new Date(e.target.value) })}
+                    type="date"
+                    value={newProgram.startDate.toDateString()}
+                />
                 <Stack>
                     <InputGroup>
                         <label>Program Length</label>
-                        <Input type="number" />
+                        <Input
+                            onChange={(e) => calculateEndDate(newProgram.startDate, parseInt(e.target.value))}
+                            type="number"
+                        />
                         <InputRightAddon
                             children={
                                 <select
