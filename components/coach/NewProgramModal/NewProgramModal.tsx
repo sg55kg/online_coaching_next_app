@@ -1,7 +1,6 @@
 import {Modal, ModalBody} from "@chakra-ui/modal";
-import {ChangeEvent, Dispatch, FC, SetStateAction, useState} from "react";
+import {ChangeEvent, FC, useState} from "react";
 import {Input, InputGroup, InputRightAddon} from "@chakra-ui/input";
-import {AthleteData} from "../../../types";
 import {Button, Stack} from "@chakra-ui/react";
 import {useCoachContext} from "../../../contexts/CoachContext";
 import {EndDateOptions, NewProgramModalProps} from "./constants";
