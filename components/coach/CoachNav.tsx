@@ -1,7 +1,7 @@
 import {FC, useRef, useState} from "react";
 import {useCoachContext} from "../../contexts/CoachContext";
 import Link from "next/link";
-import { IconButton } from "@chakra-ui/react";
+import {IconButton, VStack} from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
     Drawer,
@@ -41,9 +41,11 @@ const CoachNav: FC = () => {
                     <DrawerCloseButton 
                     />
                     <DrawerBody>
-                        <Link href="/coach/dashboard">Activity</Link>
-                        <Link href="/coach/teams">My Teams</Link>
-                        <Link href="/coach/chat">Messages</Link>
+                        <VStack>
+                            <Link href="/coach/dashboard">Activity</Link>
+                            <Link href="/coach/teams">My Teams</Link>
+                            <Link href="/coach/chat">Messages</Link>
+                        </VStack>
                     </DrawerBody>
                 </DrawerContent>        
             </Drawer>   

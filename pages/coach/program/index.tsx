@@ -18,10 +18,10 @@ const Program: NextPage = () => {
             >
                 Write New Program
             </Button>
-            <NewProgramModal
-                isOpen={viewModal}
-                onClose={toggleModal}
-            />
+            {/*<NewProgramModal*/}
+            {/*    isOpen={viewModal}*/}
+            {/*    onClose={toggleModal}*/}
+            {/*/>*/}
         </div>
     )
 }

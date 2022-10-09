@@ -16,10 +16,12 @@ const CoachProvider = ({ children }) => {
     const [coach, setCoach] = useState<CoachData>(null)
     const [teams, setTeams] = useState<TeamData[]>([])
     const [allAthletes, setAllAthletes] = useState<AthleteData[]>([])
+    const [loading, setLoading] = useState<boolean>(false)
 
 
     useEffect(() => {
         const fetchCoachData = async () => {
+            setLoading(true)
             const res = await fetch(`/api/coaches/${user.id}`, {
                 method: 'GET',
                 headers: {
@@ -27,9 +29,11 @@ const CoachProvider = ({ children }) => {
                 }
             })
             const coach: CoachData = await res.json()
+            console.log(coach)
             setCoach(coach)
             setTeams(coach.teams)
             setAllAthletes(coach.athletes)
+            setLoading(false)
         }
         if(user && coach === null) {
             fetchCoachData()
@@ -44,7 +48,7 @@ const CoachProvider = ({ children }) => {
 
     return (
         <CoachContext.Provider value={value}>
-            {children}
+            {!loading && children}
         </CoachContext.Provider>
     )
 }
