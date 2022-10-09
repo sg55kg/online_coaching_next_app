@@ -1,7 +1,7 @@
 import {NextPage} from "next";
 import {Button} from "@chakra-ui/react";
 import {useModal} from "../../../hooks/useModal";
-import NewProgramModal from "../../../components/coach/NewProgramModal";
+import NewProgramModal from "../../../components/coach/NewProgramModal/NewProgramModal";
 
 
 const Program: NextPage = () => {

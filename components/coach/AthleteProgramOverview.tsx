@@ -2,7 +2,7 @@ import {useRouter} from "next/router";
 import {useModal} from "../../hooks/useModal";
 import {useCoachContext} from "../../contexts/CoachContext";
 import {Button} from "@chakra-ui/react";
-import NewProgramModal from "./NewProgramModal";
+import NewProgramModal from "./NewProgramModal/NewProgramModal";
 
 
 const AthleteProgramOverview = () => {

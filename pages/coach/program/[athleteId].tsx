@@ -1,7 +1,7 @@
 import {NextPage} from "next";
 import {Button} from "@chakra-ui/react";
 import {useModal} from "../../../hooks/useModal";
-import NewProgramModal from "../../../components/coach/NewProgramModal";
+import NewProgramModal from "../../../components/coach/NewProgramModal/NewProgramModal";
 import {useCoachContext} from "../../../contexts/CoachContext";
 import {useRouter} from "next/router";
 import CoachLayout from "../../../layouts/CoachLayout";
@@ -34,7 +34,9 @@ const AthleteProgramPage: NextPage = () => {
 
     return (
         <CoachLayout>
-            <AthleteProgramPage />
+            <div>
+                Test
+            </div>
         </CoachLayout>
     )
 }
